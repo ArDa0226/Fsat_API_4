@@ -33,7 +33,7 @@ async def update_user(user_id: int, username: str, age: int) -> User:
 @app.delete('/user/{user_id}')
 async def delete_user(user_id: int) -> User:
     try:
-        del_user = users.pop(user_id)
+        del_user = users.pop(user_id - 1)
     except IndexError:
         raise HTTPException(status_code=404, detail='User was not found')
     return del_user
